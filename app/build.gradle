@@ -27,6 +27,14 @@ android {
     }
 
     buildTypes {
+        signingConfigs {
+            release {
+                storeFile file("D:\\ArpanRamani\\NewApk")
+                storePassword "12345678910 "
+                keyAlias "key0"
+                keyPassword "12345678910"
+            }
+        }
         release {
             minifyEnabled true
             shrinkResources true
