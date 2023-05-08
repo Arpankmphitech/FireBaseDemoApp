@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "581475788083",
+    "project_id": "fir-demo-ee009",
+    "storage_bucket": "fir-demo-ee009.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581475788083:android:c6a908d1a99db4a03e4a46",
+        "android_client_info": {
+          "package_name": "com.example.firebasedemoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "581475788083-m1fu3akr3o31ecab0gbdtlq2i84360ah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebasedemoapp",
+            "certificate_hash": "225bff340fc560d3bdfed00cdeff25b7671b8672"
+          }
+        },
+        {
+          "client_id": "581475788083-0sagr0ig5qqofo445bve8ukev3bc5f5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCRK9XES-0aqUNGDPZLXWm-FTxWtRU87E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581475788083-0sagr0ig5qqofo445bve8ukev3bc5f5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
