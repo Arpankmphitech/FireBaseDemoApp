@@ -20,6 +20,9 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class com.example.firebasedemoapp.*
+# Add this global rule
+-keepattributes Signature
 
-
+-keepclassmembers class com.example.firebasedemoapp.** {
+*;
+}

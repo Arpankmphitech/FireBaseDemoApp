@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('D:\\ArpanRamani\\FireBaseDemoApp\\app\\release')
+            storePassword '12345678910'
+            keyAlias 'key0'
+            keyPassword '12345678910'
+        }
+    }
     namespace 'com.example.firebasedemoapp'
     compileSdk 33
 

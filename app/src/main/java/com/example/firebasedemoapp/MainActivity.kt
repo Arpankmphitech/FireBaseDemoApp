@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        databaseReference!!.child(mAuth.getUid()!!).push()
+        databaseReference = firebaseDatabase!!.getReference("EmployeeInfo")
+
 
         binding.idBtnSendData.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
