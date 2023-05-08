@@ -40,7 +40,12 @@ class LoginActivity : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        binding.SignInButton.setOnClickListener { signInM() }
+        binding.SignInButton.setOnClickListener {
+
+            binding.progressBar.setVisibility(View.VISIBLE)
+
+            signInM()
+        }
     }
 
     private fun signInM() {
@@ -60,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
         try {
             binding.SignInButton.setVisibility(View.INVISIBLE)
             val account = task.getResult(ApiException::class.java)
-            Toast.makeText(this, "Signed In successfully", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Signed In successfully", Toast.LENGTH_LONG).show()
             FirebaseGoogleAuth(account)
         } catch (e: ApiException) {
             Log.e(TAG, "signInResult:failed code=" + task)
@@ -98,11 +103,13 @@ class LoginActivity : AppCompatActivity() {
             val personGivenName = account.givenName
             val personEmail = account.email
             val personId = account.id
-            Toast.makeText(this, "$personName  $personEmail", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "$personName  $personEmail", Toast.LENGTH_LONG).show()
             var intent = Intent(this, MainActivity::class.java)
             intent.putExtra("id", personId)
             startActivity(intent)
             finish()
+            binding.progressBar.setVisibility(View.INVISIBLE)
+
         }
     }
 

@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.firebasedemoapp.databinding.ActivityMainBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -21,12 +22,14 @@ class MainActivity : AppCompatActivity() {
     private var googleSignInClient: GoogleSignInClient? = null
     var databaseReference: DatabaseReference? = null
     var employeeInfo: EmployeeInfo? = null
+    var list = ArrayList<EmployeeInfo>()
+    lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        mAuth = FirebaseAuth.getInstance()
         firebaseDatabase = FirebaseDatabase.getInstance();
         initView()
 
@@ -34,9 +37,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
 
-        databaseReference = firebaseDatabase!!.getReference("EmployeeInfo");
+        val account = GoogleSignIn.getLastSignedInAccount(applicationContext)
 
-        employeeInfo = EmployeeInfo()
+        if (account != null) {
+            val personName = account.displayName
+            val personGivenName = account.givenName
+            val personEmail = account.email
+            val personId = account.id
+
+            binding.idEdtEmployeeName.setText(personEmail)
+            binding.idEdtEmployeeAddress.setText(personName)
+            binding.idEdtEmployeePhoneNumber.setText(personId)
+
+        }
+
+        databaseReference!!.child(mAuth.getUid()!!).push()
 
         binding.idBtnSendData.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -60,8 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.SignOut.setOnClickListener {
-            val firebaseAuth = FirebaseAuth.getInstance()
-            val currentUser = firebaseAuth.currentUser
+            val currentUser = mAuth.currentUser
 
             currentUser!!.delete().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -78,13 +92,28 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+//        getDataFun()
+
+    }
+
+    private fun getDataFun() {
+        databaseReference!!.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+//                var name = snapshot.
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+                Toast.makeText(this@MainActivity, "Fail to get data.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun addDatatoFirebase(name: String, phone: String, address: String) {
 
-        employeeInfo!!.employeeName = name
-        employeeInfo!!.employeeContactNumber = phone
-        employeeInfo!!.employeeAddress = address
+        var employeeInfo = EmployeeInfo(name, phone, address)
 
         databaseReference!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
