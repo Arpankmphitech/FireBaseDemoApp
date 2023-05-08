@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
         binding.idBtnSendData.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
 
-                val name: String = binding.idEdtEmployeeName.getText().toString()
-                val phone: String = binding.idEdtEmployeePhoneNumber.getText().toString()
-                val address: String = binding.idEdtEmployeeAddress.getText().toString()
+                val name: String = binding.idEdtEmployeeName.text.toString()
+                val phone: String = binding.idEdtEmployeePhoneNumber.text.toString()
+                val address: String = binding.idEdtEmployeeAddress.text.toString()
 
                 if (TextUtils.isEmpty(name) && TextUtils.isEmpty(phone) && TextUtils.isEmpty(address)) {
                     Toast.makeText(this@MainActivity, "Please add some data.", Toast.LENGTH_SHORT)
@@ -78,9 +78,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
     }
-
 
     private fun addDatatoFirebase(name: String, phone: String, address: String) {
 
@@ -97,11 +95,9 @@ class MainActivity : AppCompatActivity() {
                 binding.idEdtEmployeeAddress.text.clear()
                 binding.idEdtEmployeeName.text.clear()
                 binding.idEdtEmployeePhoneNumber.text.clear()
-
             }
 
             override fun onCancelled(error: DatabaseError) {
-
                 Toast.makeText(this@MainActivity, "Fail to add data $error", Toast.LENGTH_SHORT)
                     .show()
             }

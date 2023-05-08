@@ -41,9 +41,6 @@ class LoginActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
         binding.SignInButton.setOnClickListener { signInM() }
-
-
-
     }
 
     private fun signInM() {
@@ -103,8 +100,9 @@ class LoginActivity : AppCompatActivity() {
             val personId = account.id
             Toast.makeText(this, "$personName  $personEmail", Toast.LENGTH_LONG).show()
             var intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("id",personId)
+            intent.putExtra("id", personId)
             startActivity(intent)
+            finish()
         }
     }
 
