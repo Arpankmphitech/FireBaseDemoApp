@@ -21,8 +21,11 @@
 #-renamesourcefileattribute SourceFile
 
 # Add this global rule
--keepattributes Signature
-
--keepclassmembers class com.example.firebasedemoapp.** {
-*;
-}
+#-keep class com.example.firebasedemoapp.MainActivity
+#-keep class com.example.firebasedemoapp.LoginActivity
+#-keep class com.example.firebasedemoapp.EmployeeInfo
+#-keepattributes Signature
+#
+#-keepclassmembers class com.example.firebasedemoapp.** {
+#*;
+#}
