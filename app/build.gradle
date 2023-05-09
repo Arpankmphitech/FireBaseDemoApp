@@ -6,6 +6,18 @@ plugins {
 
 android {
 
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('D:\\ArpanRamani\\NewApk\\FireBaseApk.jks')
+            storePassword '12345678910'
+            keyAlias 'key0'
+            keyPassword '12345678910'
+        }
+    }
     namespace 'com.example.firebasedemoapp'
     compileSdk 33
 
@@ -17,11 +29,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
     buildTypes {
         release {
             minifyEnabled true
-            shrinkResources = true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
