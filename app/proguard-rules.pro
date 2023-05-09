@@ -44,4 +44,14 @@
 
 -dontwarn org.jetbrains.annotations.**
 
+-keep class com.example.firebasedemoapp.EmployeeInfo { <init>(...); }
+-keep class com.example.firebasedemoapp.LoginActivity { <init>(...); }
+-keep class com.example.firebasedemoapp.MainActivity { <init>(...); }
+
+
+#-adaptresourcefilenames    **.properties,**.gif,**.jpg
+#-adaptresourcefilecontents **.properties,META-INF/MANIFEST.MF
+
+
+
 
