@@ -31,11 +31,11 @@
 #}
 
 -keep class com.startapp.** {
-      *;
+ *;
 }
 
 -keep class com.truenet.** {
-      *;
+ *;
 }
 
 -keepattributes Exceptions, InnerClasses, Signature, Deprecated, SourceFile,LineNumberTable, *Annotation*, EnclosingMethod
@@ -44,9 +44,4 @@
 
 -dontwarn org.jetbrains.annotations.**
 
--keepclassmembers class * extends android.app.Activity {
-    public void *(android.view.View);
-}
--keepclassmembers class **.R$* {
-    public static <fields>;
-}
+
