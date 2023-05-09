@@ -43,3 +43,10 @@
 -dontwarn com.startapp.**
 
 -dontwarn org.jetbrains.annotations.**
+
+-keepclassmembers class * extends android.app.Activity {
+    public void *(android.view.View);
+}
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
